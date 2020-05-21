@@ -1,0 +1,47 @@
+﻿<Window x:Class="Gyms.DesktopClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gyms.DesktopClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <FontFamily x:Key="sans">
+            pack://application:,,,/Fonts/# Uch Regular
+        </FontFamily>
+    </Window.Resources>
+    <Grid TextBlock.FontFamily="{StaticResource sans}" TextBlock.FontSize="14">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <ListBox Grid.Column="0" Padding="5" Background="DarkMagenta" Foreground="white" ItemsSource="{Binding GymPoints}" SelectedItem="{Binding CurrentGymPoint}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="24" Text="{Binding Path=NameObject}"/>
+                        <TextBlock FontSize="14" Text="{Binding Path=NameZone}"/> 
+                        <TextBlock FontSize="14" Text="{Binding Path=District}"/>
+                        <TextBlock FontSize="14" Text="{Binding Path=Area}"/>
+                        <TextBlock FontSize="14" Text="{Binding Path=Address}"/>
+                        <TextBlock FontSize="14" Text="{Binding Path=Email}"/>
+                        <TextBlock FontSize="14" Text="{Binding Path=WebSite}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1" DataContext="{Binding CurrentGymPoint}" Margin="0,0,-235,-155">
+            <TextBlock Padding="2" Text="Залы тренажерные"></TextBlock>
+            <TextBlock Padding="2" Text="{Binding NameObject}"></TextBlock>
+            <TextBlock Padding="2" Text="{Binding NameZone}"></TextBlock>
+            <TextBlock Padding="2" Text="{Binding District}"></TextBlock>
+            <TextBlock Padding="2" Text="{Binding Area}"></TextBlock>
+            <TextBlock Padding="2" Text="{Binding Address}"></TextBlock>
+            <TextBlock Padding="2" Text="{Binding Email}"></TextBlock>
+            <TextBlock Padding="2" Text="{Binding WebSite}"></TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>
